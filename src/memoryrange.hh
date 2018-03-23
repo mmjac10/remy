@@ -14,11 +14,13 @@ typedef RemyBuffers::MemoryRange::Axis Axis;
 
 class MemoryRange {
 private:
+    //memory class stores the input parameters for remy and memory range defines the upper/lower bounds for it
   Memory _lower, _upper;  
 
   /* _active_axis specifies the group of signals in Memory used by the sender. 
      For example, Fish only uses signal rtt_diff, while Rat uses four signals: 
      rec_send_ewma, rec_rec_ewma, rtt_ratio and slow_rec_rec_rewma. */
+  //_active_axis stores enum values of SEND_EWMA, REC_EWMA, RTT_RATIO, SLOW_REC_EWMA, RTT_DIFF, QUEUEING_DELAY
   std::vector< Axis > _active_axis;
 
   mutable std::vector< boost::accumulators::accumulator_set< Memory::DataType,
